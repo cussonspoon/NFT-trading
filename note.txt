@@ -1,0 +1,1 @@
+compile smart contract : truffle compile --config truffle-config.cjs
