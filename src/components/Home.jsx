@@ -35,7 +35,7 @@ const Home = () => {
                 </div>
             </div>
             <div className="flex flex-1 justify-center h-full">
-                <NFTcard width={20} height={100}></NFTcard>
+                <NFTcard width={'3/4'} height={'4/5'}></NFTcard>
             </div>
         </div>
     );
