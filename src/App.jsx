@@ -13,28 +13,32 @@ import ArtistList from './components/ArtistList';
 import QnA from './components/Q&A';
 import About from './components/About';
 import ArtistProfile from './pages/ArtistProfile';
-
+import Dashboard from './pages/Dashboard';
 
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Router>
       <Routes>
-        <div className="w-screen min-h-screen bg-zinc-900">
+        {/* <Dashboard></Dashboard> */}
+        <Route path="/" element={<Dashboard/>}></Route>
+        <Route path="/artist" element={<ArtistProfile/>}></Route>
+
+        {/* <div className="w-screen min-h-screen bg-zinc-900">
           <Navbar></Navbar>
+          <Dashboard></Dashboard> */}
           {/* <ArtistProfile></ArtistProfile> */}
 
-          <div className='pt-28'>
+          {/* <div className='pt-28'>
             <Home></Home>
             <About></About>
             <Artwork></Artwork>
             <ArtistList></ArtistList>
             <QnA></QnA>  
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
 
       </Routes>
     </Router>

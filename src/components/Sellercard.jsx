@@ -1,7 +1,10 @@
-const SellerCard = () => {
+const SellerCard = ({onClick}) => {
     return (
         // <div className={`w-${width} h-${height} rounded-2xl relative overflow-hidden`}>
-        <div className="w-80 h-72 rounded-2xl relative overflow-hidden transform transition duration-500 hover:scale-95">
+        <div 
+        onClick={onClick}
+        className="w-80 h-72 rounded-2xl relative overflow-hidden transform transition duration-500 hover:scale-95"
+        >
             <img className="object-cover w-full h-full absolute top-0 left-0 z-0" src="/nft/nft1.jpg" alt="NFT" />
             
             <div className="absolute bottom-0 w-full bg-gray-900 bg-opacity-70 text-white p-3 z-10">

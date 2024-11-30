@@ -2,8 +2,10 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import SellerCard from './Sellercard';
+import { useNavigate } from 'react-router-dom';
 
 const CarouselComponent = () => {
+    const navigate = useNavigate();
   const carouselItems = [
     {
         id: 1,
@@ -70,6 +72,11 @@ const CarouselComponent = () => {
       {carouselItems.map((item) => (
         <SellerCard
             key={item.id}
+            onClick={() => {
+                navigate("/artist", {
+                    replace: true,
+                });
+            }}
         ></SellerCard>
       ))}
     </Carousel>
