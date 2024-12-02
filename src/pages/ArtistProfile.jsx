@@ -21,6 +21,8 @@ const ArtistProfile = () => {
                     />
                     <div className="absolute top-0 h-96 w-full bg-gradient-to-t from-black via-zinc/60 to-zinc/50
         bg-opacity-50"></div>
+                    <div className="absolute top-96 h-96 w-full bg-gradient-to-b from-black via-zinc/60 to-zinc/50
+                    bg-opacity-50"></div>
 
                     <div className="ml-96 mt-20">
                         <div className="grid grid-cols-4 gap-4">
