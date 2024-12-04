@@ -2,6 +2,10 @@ import Salecard from "../components/Salecard";
 import Layout from "../components/Layout";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import styled from "styled-components";
+import Search from "../components/search";
+import Filter from "../components/fliter";
+import TestAnimation from "../components/testanimation";
 
 const Button = ({ name, setMode, mode }) => {
     const isActive = mode === name;
@@ -115,8 +119,11 @@ const UserProfile = () => {
 
                     <div className="ml-96 mt-20">
                         <div className="flex mb-5 space-x-2">
+                            <Search/>
+                            <Filter/>
                             <Button name={"Collection"} setMode={setMode} mode={mode}></Button>
                             <Button name={"My listed NFT"} setMode={setMode} mode={mode}></Button>
+                            <TestAnimation/>
                         </div>
                         
                         {
