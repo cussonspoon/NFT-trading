@@ -9,7 +9,7 @@ import ArtistProfile from './pages/ArtistProfile';
 import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
 import Authentication from './pages/Authentication';
-import Marketplace from './pages/marketplace';
+import Marketplace from './pages/Marketplace';
 
 import './App.css'
 
