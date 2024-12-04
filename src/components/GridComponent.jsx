@@ -22,7 +22,7 @@ const GridComponent = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+      <div className="grid md:grid-cols-4 gap-5">
         {items.map((item) => (
           <div
             key={item.id}
