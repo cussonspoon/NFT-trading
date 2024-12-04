@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from "styled-components";
 import Search from "../components/search";
-import Filter from "../components/fliter";
-import TestAnimation from "../components/testanimation";
+import Filter from "../components/filter";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Button = ({ name, setMode, mode }) => {
     const isActive = mode === name;
-  
+
     return (
       <button
         onClick={() => {
@@ -31,6 +31,8 @@ const Button = ({ name, setMode, mode }) => {
       </button>
     );
   };
+
+
   
 
 const UserSalecard = ({ width, height, img }) => {
@@ -92,85 +94,144 @@ const UserreSalecard = ({ width, height, img }) => {
       </div>
     );
 };
+
+
+
+
   
 
 const UserProfile = () => {
     const [mode, setMode] = useState("Collection")
+    const [isFilterActive, setIsFilterActive] = useState(false);
     const getUser = async () => {
         const response = await axios.get('http://127.0.0.1:8000/user/me');
     }
-    useEffect(() => {
-
-    }, []);
     return (
-        <Layout>
-            <div className="relative w-full min-h-screen bg-zinc-900 overflow-auto">
-                {/* Banner Image */}
-                <div className="w-screen h-96">
-                    <img
-                        className="object-cover w-full h-full"
-                        src="/artist/banner.webp"
-                        alt=""
-                    />
-                    <div className="absolute top-0 h-96 w-full bg-gradient-to-t from-black via-zinc/60 to-zinc/50
-        bg-opacity-50"></div>
-                    <div className="absolute top-96 h-96 w-full bg-gradient-to-b from-black via-zinc/60 to-zinc/50
-                    bg-opacity-50"></div>
+      <Layout>
+          <div className="relative w-full min-h-screen bg-zinc-900 overflow-auto">
+              {/* Banner Image */}
+              <div className="w-screen h-96">
+                  <img
+                      className="object-cover w-full h-full"
+                      src="/artist/banner.webp"
+                      alt=""
+                  />
+                  <div className="absolute top-0 h-96 w-full bg-gradient-to-t from-black via-zinc/60 to-zinc/50 bg-opacity-50"></div>
+                  <div className="absolute top-96 h-96 w-full bg-gradient-to-b from-black via-zinc/60 to-zinc/50 bg-opacity-50"></div>
 
-                    <div className="ml-96 mt-20">
-                        <div className="flex mb-5 space-x-2">
-                            <Search/>
-                            <Filter/>
-                            <Button name={"Collection"} setMode={setMode} mode={mode}></Button>
-                            <Button name={"My listed NFT"} setMode={setMode} mode={mode}></Button>
-                            <TestAnimation/>
-                        </div>
-                        
-                        {
-                            mode === "Collection" ? (
-                                <div className="grid grid-cols-4 gap-4">
-                                    <UserSalecard></UserSalecard>
-                                    <UserSalecard></UserSalecard>
-                                    <UserSalecard></UserSalecard>
-                                    <UserSalecard></UserSalecard>
-                                </div>
-                            ) : (
-                                <div className="grid grid-cols-4 gap-4">
-                                    <UserreSalecard></UserreSalecard>
-                                    <UserreSalecard></UserreSalecard>
-                                    <UserreSalecard></UserreSalecard>
-                                   
-                                </div>
-                            )
-                        }
-                        
-                        {/* <Salecard></Salecard> */}
-                    </div> 
-                    
-                </div>
+                  <div className="ml-96 mt-20">
+                      <div className="flex mb-5 space-x-2">
+                          <Search />
+                          <Filter
+                              isToggle={isFilterActive}
+                              onClick={() => setIsFilterActive((prevState) => !prevState)}
+                          />
+                          
+                          {/* Animated Buttons */}
+                          <AnimatePresence>
+                              {isFilterActive && (
+                                  <>
+                                      <motion.div
+                                          initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          animate={{ opacity: 1, scale: 1, x: 0 }}
+                                          exit={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          transition={{ duration: 0.4, ease: "easeOut" }}
+                                          className="inline-block"
+                                      >
+                                          <Button
+                                              name={"Oldest"}
+                                              setMode={setMode}
+                                              mode={mode}/>
+                                      </motion.div>
+                                      <motion.div
+                                          initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          animate={{ opacity: 1, scale: 1, x: 0 }}
+                                          exit={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          transition={{
+                                              duration: 0.4,
+                                              ease: "easeOut",
+                                              delay: 0.1, // Slight delay for staggered animation
+                                          }}
+                                          className="inline-block"
+                                      >
+                                          <Button
+                                              name={"Newest"}
+                                              setMode={setMode}
+                                              mode={mode}
+                                          />
+                                      </motion.div>
+                                      <motion.div
+                                          initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          animate={{ opacity: 1, scale: 1, x: 0 }}
+                                          exit={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          transition={{
+                                              duration: 0.4,
+                                              ease: "easeOut",
+                                              delay: 0.1, // Slight delay for staggered animation
+                                          }}
+                                          className="inline-block"
+                                      >
+                                          <Button
+                                              name={"Ascending"}
+                                              setMode={setMode}
+                                              mode={mode}
+                                          />
+                                      <motion.div
+                                          initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          animate={{ opacity: 1, scale: 1, x: 0 }}
+                                          exit={{ opacity: 0, scale: 0.5, x: -50 }}
+                                          transition={{
+                                              duration: 0.4,
+                                              ease: "easeOut",
+                                              delay: 0.1, // Slight delay for staggered animation
+                                          }}
+                                          className="inline-block"
+                                      >
+                                          <Button
+                                              name={"Decending"}
+                                              setMode={setMode}
+                                              mode={mode}
+                                          />
+                                      </motion.div>
+                                      </motion.div>
+                                  </>
+                              )}
+                          </AnimatePresence>
+                      </div>
 
-        
-                {/* Seller Profile */}
-                <div className="absolute top-64 left-20 backdrop-blur-sm bg-white/20 text-white w-64 rounded-3xl p-5 shadow-lg">
-                    <div className="flex flex-col items-center">
-                        <img className="w-40 h-40 rounded-full mb-10" src="/nft/nft1.jpg" alt="" />
-                        <h1 className="text-xl font-bold">Neo Tokyo Citizens</h1>
-                        <h2 className="text-sm  mb-5">Metamask account</h2>
-            
-                        <p className="text-center text-sm mt-2 mb-5">
-                        A trailblazing NFT artist known for blending futuristic design with
-                        cutting-edge blockchain technology.
-                        </p>
-                    </div>
-                </div>
-        
-                {/* Sale Cards */}
-                
-            </div>
-        </Layout>
-    
-    );
-  };
-  
+                      {mode === "Collection" ? (
+                          <div className="grid grid-cols-4 gap-4">
+                              <UserSalecard />
+                              <UserSalecard />
+                              <UserSalecard />
+                              <UserSalecard />
+                          </div>
+                      ) : (
+                          <div className="grid grid-cols-4 gap-4">
+                              <UserreSalecard />
+                              <UserreSalecard />
+                              <UserreSalecard />
+                          </div>
+                      )}
+                  </div>
+              </div>
+
+              {/* Seller Profile */}
+              <div className="absolute top-64 left-20 backdrop-blur-sm bg-white/20 text-white w-64 rounded-3xl p-5 shadow-lg">
+                  <div className="flex flex-col items-center">
+                      <img className="w-40 h-40 rounded-full mb-10" src="/nft/nft1.jpg" alt="" />
+                      <h1 className="text-xl font-bold">Neo Tokyo Citizens</h1>
+                      <h2 className="text-sm mb-5">Metamask account</h2>
+
+                      <p className="text-center text-sm mt-2 mb-5">
+                          A trailblazing NFT artist known for blending futuristic design with
+                          cutting-edge blockchain technology.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </Layout>
+  );
+};
 
 export default UserProfile;
