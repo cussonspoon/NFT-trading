@@ -40,6 +40,7 @@ const sample_nfts_collect = [
     price: 500,
     created_at: "Feb 14, 2023",
     sold: false,
+    tag: "Art",
   },
   {
     name: "Cyberpunk Kitten",
@@ -49,6 +50,7 @@ const sample_nfts_collect = [
     price: 350,
     created_at: "Mar 3, 2024",
     sold: false,
+    tag: "Art",
   },
   {
     name: "Pixel Samurai",
@@ -58,6 +60,7 @@ const sample_nfts_collect = [
     price: 400,
     created_at: "Dec 20, 2023",
     sold: true,
+    tag: "Photography",
   },
   {
     name: "Ethereal Forest",
@@ -67,6 +70,7 @@ const sample_nfts_collect = [
     price: 600,
     created_at: "Apr 10, 2022",
     sold: true,
+    tag: "Photography",
   },
   {
     name: "Astronaut Ape",
@@ -85,6 +89,7 @@ const sample_nfts_collect = [
     price: 700,
     created_at: "Sep 1, 2024",
     sold: true,
+    tag: "Music",
   },
   {
     name: "Neon Dragon",
@@ -103,6 +108,7 @@ const sample_nfts_collect = [
     price: 450,
     created_at: "Jul 25, 2023",
     sold: false,
+    tag: "Art",
   },
   {
     name: "Mystic Wolf",
@@ -112,6 +118,7 @@ const sample_nfts_collect = [
     price: 300,
     created_at: "Jan 5, 2024",
     sold: true,
+    tag: "Photography",
   },
   {
     name: "Crypto Panda",
@@ -121,6 +128,7 @@ const sample_nfts_collect = [
     price: 350,
     created_at: "Nov 18, 2022",
     sold: false,
+    tag: "PFPs",
   },
 ];
 
@@ -153,10 +161,18 @@ const Marketplace = () => {
     fetchNFTData();
   }, []);
 
-  const filteredNftData = nftData.filter((nft) =>
-    nft.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    nft.owner.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredNftData = nftData.filter((nft) => {
+    const matchesSearch = 
+      nft.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      nft.owner.toLowerCase().includes(searchQuery.toLowerCase());
+
+    // Filter based on mode/tag
+    const matchesMode = 
+      mode === "All" || 
+      (nft.tag && nft.tag.toLowerCase() === mode.toLowerCase());
+
+    return matchesSearch && matchesMode;
+  });
 
   return (
     <Layout>
@@ -170,16 +186,7 @@ const Marketplace = () => {
             <Button name={"Photography"} setMode={setMode} mode={mode}></Button>
             <Button name={"PFPs"} setMode={setMode} mode={mode}></Button>
           </div>
-          {/* todo: Implement search bar below */}
-          {mode === "All" ? (
-            <div>
-              <GridComponent nftData={filteredNftData}/>
-            </div>
-          ) : (
-            <div>
-              <GridComponent nftData={filteredNftData}/>
-            </div>
-          )}
+          <GridComponent nftData={filteredNftData} />
         </div>
       </div>
     </Layout>
