@@ -11,3 +11,5 @@ const IconSearch = (props) => (
 );
 
 export default IconSearch;
+
+
