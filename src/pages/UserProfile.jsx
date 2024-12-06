@@ -128,47 +128,45 @@ const Button = ({ name, setMode, mode }) => {
   );
 };
 
-const UserSalecard = ({
-  name,
-  owner,
-  img,
-  status,
-  price,
-  created_at,
-  sold,
-}) => {
+const NftMarketCard = ({ onClick, nftData = {} }) => {
+  const {
+      name = 'Unnamed NFT', 
+      price = 0, 
+      owner = 'Unknown', 
+      img = '/nft/nft1.jpg'
+  } = nftData;
+
   return (
-    <div className="w-60 h-96 rounded-2xl relative overflow-hidden group mb-3">
-      {/* Background Image */}
-      <img
-        className="object-cover w-full h-full absolute top-0 left-0 z-0"
-        src={img || "/nft/nft1.jpg"}
-        alt={`${name} NFT`}
-      />
+      <div 
+      onClick={onClick}
+      className="w-80 h-72 rounded-2xl relative overflow-hidden transform transition duration-500 hover:scale-95"
+      >
+          <img 
+              className="object-cover w-full h-full absolute top-0 left-0 z-0" 
+              src={img || '/nft/nft1.jpg'} 
+              alt={name} 
+          />
 
-      {/* Card Details */}
-      <div className="absolute bottom-0 w-full h-28 bg-black bg-opacity-50 text-white p-4 z-10">
-        <div className="flex flex-col space-y-2 text-left">
-          {/* NFT Name */}
-          <h1 className="text-lg font-bold truncate">{name}</h1>
-
-          {/* Owner */}
-          <p className="text-sm italic text-gray-300 truncate">
-            Owned by {owner}
-          </p>
-
-          {/* Price */}
-          <span className="text-md font-semibold mt-1">{price} ETH</span>
-        </div>
-      </div>
-
-      {/* Action Button */}
-      <div className="absolute bottom-[-3rem] w-full bg-blue-500 text-white text-center p-2 z-20 transition-all duration-500 ease-in-out group-hover:bottom-0">
-        {sold ? "Resell Now" : "Sell Now"}
-      </div>
-    </div>
+          <div className="absolute bottom-0 w-full bg-gray-900 bg-opacity-70 text-white p-3 z-10">
+              <div className="flex flex-col">
+                  <h1 className="text-xl font-bold">{name}</h1>
+                  <div className="flex justify-between items-center">
+                      <div className="flex flex-col">
+                          <h2 className="text-sm">Price</h2>
+                          <h2 className="text-lg font-semibold">{price} ETH</h2>
+                      </div>
+                      <div className="flex flex-col">
+                          <h2 className="text-sm">Owner</h2>
+                          <h2 className="text-lg font-semibold">{owner}</h2>
+                      </div>
+                  </div>
+              </div>
+          </div>
+     </div>
   );
-};
+}
+
+
 
 // const UserreSalecard = ({img, name }) => {
 //     return (
@@ -311,21 +309,14 @@ const UserProfile = () => {
                 )}
               </AnimatePresence>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              {sorted_sample_nfts_collect.map((nft, index) => (
-                <UserSalecard
-                  key={index} // Use index or a unique ID for the key
-                  name={nft.name}
-                  owner={nft.owner}
-                  img={nft.img}
-                  status={nft.status}
-                  price={nft.price}
-                  created_at={nft.created_at}
-                  sold={nft.sold}
-                />
+            <div className="flex item-center justify-center mr-20">
+            <div className="grid grid-cols-3 gap-4 gap-x-20 mr-20">
+              {sorted_sample_nfts_collect.map((item) => (
+                <NftMarketCard nftData={item}/>
               ))}
             </div>
           </div>
+        </div>
         </div>
 
         {/* Seller Profile */}
