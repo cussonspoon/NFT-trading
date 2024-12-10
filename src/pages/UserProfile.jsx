@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Search from "../components/search";
 import Filter from "../components/filter";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const sample_nfts_collect = [
   {
@@ -100,10 +101,21 @@ const sample_nfts_collect = [
   },
 ];
 
+const sample_user_profile = 
+  {
+    ID : "u89124391237u498d7h19827nfhghdhj",
+    username : "Teemy17",
+    Metamask_account : "Teemy_wallet",
+    Profile_description : "I want to buy nfts and watch it go to the moon lmao Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam laborum, atque, ratione in totam ab voluptas doloremque quo nulla libero ipsa debitis eaque dolor illum asperiores quis repellat, dolores eos?",
+    Profile_img : "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/10/Bocchi-The-Rock!-Episode-4-Hitori-Gotou-Loses-Her-Mind-Crunchyroll.jpg",
+    Inventory : sample_nfts_collect,
+    Onsale : sample_nfts_collect,
+    Total_Volume : 123,
+    Tags_id : "..."
 
+  }
 
-
-const Button = ({ name, setMode, mode }) => {
+export const Button = ({ name, setMode, mode }) => {
   const isActive = mode === name;
 
   return (
@@ -128,7 +140,8 @@ const Button = ({ name, setMode, mode }) => {
   );
 };
 
-const NftMarketCard = ({ onClick, nftData = {} }) => {
+export const NftMarketCard = ({ onClick, nftData = {} }) => {
+  const navigate = useNavigate();
   const {
     name = "Unnamed NFT",
     price = 0,
@@ -173,7 +186,10 @@ const NftMarketCard = ({ onClick, nftData = {} }) => {
             </div>
             <div className="flex flex-col">
               <h2 className="text-sm">Owner</h2>
-              <h2 className="text-lg font-semibold">{owner}</h2>
+              <h2
+                className="text-lg font-semibold cursor-pointer hover:underline"
+                onClick={() => navigate(`/artist/${owner}`)}
+              >{owner}</h2>
             </div>
           </div>
         </div>
@@ -221,7 +237,7 @@ const UserProfile = () => {
     const response = await axios.get("http://127.0.0.1:8000/user/me");
   };
 
-  const sorted_sample_nfts_collect = [...sample_nfts_collect].sort((a, b) => {
+  const sorted_data = [...sample_user_profile.Inventory].sort((a, b) => {
     switch (mode) {
       case "Oldest":
         return new Date(a.created_at) - new Date(b.created_at); // Ascending by date
@@ -326,7 +342,7 @@ const UserProfile = () => {
             </div>
             <div className="flex item-center justify-center mr-20">
             <div className="grid grid-cols-3 gap-4 gap-x-20 mr-20">
-              {sorted_sample_nfts_collect.map((item) => (
+              {sorted_data.map((item) => (
                 <NftMarketCard nftData={item}/>
               ))}
             </div>
@@ -339,15 +355,14 @@ const UserProfile = () => {
           <div className="flex flex-col items-center">
             <img
               className="w-40 h-40 rounded-full mb-10"
-              src="/nft/nft1.jpg"
+              src= {sample_user_profile.Profile_img}
               alt=""
             />
-            <h1 className="text-xl font-bold">Neo Tokyo Citizens</h1>
-            <h2 className="text-sm mb-5">Metamask account</h2>
+            <h1 className="text-xl font-bold">{sample_user_profile.username}</h1>
+            <h2 className="text-sm mb-5">{sample_user_profile.Metamask_account}</h2>
 
             <p className="text-center text-sm mt-2 mb-5">
-              A trailblazing NFT artist known for blending futuristic design
-              with cutting-edge blockchain technology.
+            {sample_user_profile.Profile_description}
             </p>
           </div>
         </div>
