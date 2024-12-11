@@ -20,7 +20,7 @@ function App() {
       <Routes>
         {/* <Dashboard></Dashboard> */}
         <Route path="/" element={<Dashboard/>}></Route>
-        <Route path="/artist" element={<ArtistProfile/>}></Route>
+        <Route path="/artist/:artistName" element={<ArtistProfile/>}></Route>
         <Route path="/profile" element={<UserProfile></UserProfile>}></Route>
         <Route path="/auth" element={<Authentication></Authentication>}></Route>
         <Route path="/marketplace" element={<Marketplace></Marketplace>}></Route>
