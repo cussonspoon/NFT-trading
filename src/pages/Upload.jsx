@@ -6,7 +6,7 @@ import LoadingButton from "../components/LoadingButton";
 const Upload = () => {
   const [itemName, setItemName] = useState("");
   const [description, setDescription] = useState("");
-  const [royalties, setRoyalties] = useState("10%");
+  const [royalties, setRoyalties] = useState("");
   const [size, setSize] = useState("");
   const [properties, setProperties] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
@@ -103,7 +103,7 @@ const Upload = () => {
                       <input
                         type="text"
                         className="w-full bg-zinc-800 text-white rounded-md px-4 py-2"
-                        placeholder="e.g., 10%"
+                        placeholder="e.g., 10"
                         value={royalties}
                         onChange={(e) => setRoyalties(e.target.value)}
                       />
@@ -146,7 +146,7 @@ const Upload = () => {
               <NftMarketCard
                 nftData={{
                   name: itemName || "Unnamed NFT",
-                  price: royalties || "0%",
+                  price: royalties || "0",
                   owner: "You",
                   img: imagePreview || "/nft/nft1.jpg",
                 }}
@@ -156,7 +156,7 @@ const Upload = () => {
                 onClick={() => {
                   setItemName("");
                   setDescription("");
-                  setRoyalties("10%");
+                  setRoyalties("");
                   setSize("");
                   setProperties("");
                   setImagePreview(null);
