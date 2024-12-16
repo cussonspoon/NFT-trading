@@ -35,6 +35,7 @@ const NFTPage = () => {
           <NFTImage
             imageSrc={sampleNFT.imageSrc || "/nft/nft1.jpg"}
             className="max-w-full"
+            width="w-full"
           />
 
           {/* Right Section */}
@@ -70,6 +71,7 @@ const NFTPage = () => {
 
 export default NFTPage;
 
+// // old layout 
 // import Layout from "../components/Layout";
 // import NFTDetails from "../components/Nft_details_page/NFT_details";
 // import NFTActions from "../components/Nft_details_page/NFT_actions";
