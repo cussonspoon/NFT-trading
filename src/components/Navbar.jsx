@@ -20,7 +20,7 @@ const Navbar = () => {
             >
             TRADEX
             </h1>
-            <ul className="flex space-x-6">
+            <ul className="flex space-x-6 items-center">
             <li>
                 <p
                 className="cursor-pointer"
@@ -39,6 +39,14 @@ const Navbar = () => {
             <li>
                 <p className="cursor-pointer">WALLET</p>
             </li>
+                        <li>
+          <button
+            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full font-semibold hover:from-pink-500 hover:to-purple-500 transition duration-300"
+            onClick={() => handlePage("upload")}
+          >
+            UPLOAD
+          </button>
+        </li>
             </ul>
         </nav>
         );
