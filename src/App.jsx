@@ -10,7 +10,8 @@ import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
 import Authentication from './pages/Authentication';
 import Marketplace from './pages/Marketplace';
-import Upload from './pages/upload';
+import NFTPage from './pages/Nft_details';
+import Upload from './pages/Upload';
 
 import './App.css'
 
@@ -26,8 +27,8 @@ function App() {
         <Route path="/profile" element={<UserProfile></UserProfile>}></Route>
         <Route path="/auth" element={<Authentication></Authentication>}></Route>
         <Route path="/marketplace" element={<Marketplace></Marketplace>}></Route>
+        <Route path="/assets/:assetId" element={<NFTPage></NFTPage>}></Route>
         <Route path="/upload" element={<Upload/>}></Route>
-
       </Routes>
     </Router>
   )
