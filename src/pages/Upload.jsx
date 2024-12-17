@@ -24,7 +24,7 @@ const Upload = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center min-h-screen bg-zinc-900 text-white">
+      <div className="flex justify-center items-center min-h-screen bg-zinc-900 text-white pt-24 sm:pt-32 overflow-auto">
         <div className="w-full max-w-7xl">
           {/* Header */}
           <div className="mb-10 flex">
