@@ -25,6 +25,7 @@ const NFTPage = () => {
       "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     imageSrc: "/nft/nft1.jpg",
     price: 6.3,
+    tag: ["Cunny", "Art", "PFP"]
   };
 
   return (
@@ -44,6 +45,7 @@ const NFTPage = () => {
               title={sampleNFT.title}
               owner={sampleNFT.owner}
               description={sampleNFT.description}
+              tag={sampleNFT.tag}
               renderHeader={() => (
                 <button
                   onClick={handleShare}
@@ -70,77 +72,3 @@ const NFTPage = () => {
 };
 
 export default NFTPage;
-
-// // old layout 
-// import Layout from "../components/Layout";
-// import NFTDetails from "../components/Nft_details_page/NFT_details";
-// import NFTActions from "../components/Nft_details_page/NFT_actions";
-// import NFTImage from "../components/Nft_details_page/NFT_image";
-// import ItemActivity from "../components/Nft_details_page/item_activity";
-// import { FaShareAlt } from "react-icons/fa";
-
-// const NFTPage = () => {
-//   const fetchAsset = async () => {
-//     console.log("Fetching asset...");
-//   };
-
-//   const handleShare = () => {
-//     console.log("Share clicked");
-//     const current_url = window.location.href;
-//     navigator.clipboard.writeText(current_url).then(() => {
-//       console.log("URL copied to clipboard");
-//     });
-//   };
-
-//   const sampleNFT = {
-//     title: "Cunny pics",
-//     owner: "Sensei",
-//     description:
-//       "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-//     imageSrc: "/nft/nft1.jpg",
-//     price: 6.3,
-//   };
-
-//   return (
-//    <Layout>
-//   <div className="min-h-screen text-white justify-center w-full overflow-hidden">
-//     <div className="p-3">
-//       <div className="grid grid-cols-2 mt-32 justify-items-center gap-y-10">
-//         {/* Left Section */}
-//         <NFTImage
-//           imageSrc={sampleNFT.imageSrc || "/nft/nft1.jpg"}
-//           width="w-4/5"
-//         />
-
-//         {/* Right Section */}
-//         <div className="mr-10">
-//           <NFTDetails
-//             title={sampleNFT.title}
-//             owner={sampleNFT.owner}
-//             description={sampleNFT.description}
-//             renderHeader={() => (
-//               <button
-//                 onClick={handleShare}
-//                 className="p-2 rounded-lg bg-zinc-800 border border-zinc-400 hover:bg-gray-700"
-//                 aria-label="Share"
-//               >
-//                 <FaShareAlt className="text-xl" />
-//               </button>
-//             )}
-//           />
-//           <NFTActions
-//             price="6.3"
-//             onBuyNow={fetchAsset}
-//             onMakeOffer={() => console.log("Make offer clicked")}
-//           />
-//         </div>
-//         <ItemActivity />
-//       </div>
-//     </div>
-//   </div>
-// </Layout>
- 
-//   );
-// };
-
-// export default NFTPage;
