@@ -18,6 +18,7 @@ const sample_nfts_collect_artist = [
       price: 500,
       created_at: "Feb 14, 2023",
       sold: false,
+      id: "asdawd",
     },
     {
       name: "Cyberpunk Kitten",
@@ -27,6 +28,7 @@ const sample_nfts_collect_artist = [
       price: 350,
       created_at: "Mar 3, 2024",
       sold: false,
+      id: "b393930s",
     },
     {
         name: "Galaxy Explorer",
@@ -36,6 +38,7 @@ const sample_nfts_collect_artist = [
         price: 500,
         created_at: "Feb 14, 2023",
         sold: false,
+        id: "c939jjc",
       },
       {
         name: "Cyberpunk Kitten",
@@ -45,6 +48,7 @@ const sample_nfts_collect_artist = [
         price: 350,
         created_at: "Mar 3, 2024",
         sold: false,
+        id: "d3k3k3",
       },
       {
         name: "Galaxy Explorer",
@@ -54,6 +58,7 @@ const sample_nfts_collect_artist = [
         price: 500,
         created_at: "Feb 14, 2023",
         sold: false,
+        id: "fffaw33",
       },
       {
         name: "Cyberpunk Kitten",
@@ -63,6 +68,7 @@ const sample_nfts_collect_artist = [
         price: 350,
         created_at: "Mar 3, 2024",
         sold: false,
+        id: "00ajs8c9",
       },
       {
         name: "Galaxy Explorer",
@@ -72,6 +78,7 @@ const sample_nfts_collect_artist = [
         price: 500,
         created_at: "Feb 14, 2023",
         sold: false,
+        id: "a9s9s9s",
       },
       {
         name: "Cyberpunk Kitten",
@@ -81,6 +88,7 @@ const sample_nfts_collect_artist = [
         price: 350,
         created_at: "Mar 3, 2024",
         sold: false,
+        id: "c9s9s9s",
       },
       {
         name: "Galaxy Explorer",
@@ -90,6 +98,7 @@ const sample_nfts_collect_artist = [
         price: 500,
         created_at: "Feb 14, 2023",
         sold: false,
+        id: "skjjdvijsj"
       },
       {
         name: "Cyberpunk Kitten",
@@ -99,6 +108,7 @@ const sample_nfts_collect_artist = [
         price: 350,
         created_at: "Mar 3, 2024",
         sold: false,
+        id: "akslcjacjp"
       },
     // ...other NFTs
   ];

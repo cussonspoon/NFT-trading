@@ -17,6 +17,7 @@ const sample_nfts_collect = [
     price: 500,
     created_at: "Feb 14, 2023",
     sold: false,
+    id: "0xjasd9f",
   },
   {
     name: "Cyberpunk Kitten",
@@ -26,6 +27,7 @@ const sample_nfts_collect = [
     price: 350,
     created_at: "Mar 3, 2024",
     sold: false,
+    id: "0xjasd9f456",
   },
   {
     name: "Pixel Samurai",
@@ -35,6 +37,7 @@ const sample_nfts_collect = [
     price: 400,
     created_at: "Dec 20, 2023",
     sold: true,
+    id: "0xaxafe",
   },
   {
     name: "Ethereal Forest",
@@ -44,6 +47,7 @@ const sample_nfts_collect = [
     price: 600,
     created_at: "Apr 10, 2022",
     sold: true,
+    id: "jjand"
   },
   {
     name: "Astronaut Ape",
@@ -53,6 +57,7 @@ const sample_nfts_collect = [
     price: 250,
     created_at: "Jun 15, 2023",
     sold: false,
+    id: "0xadada",
   },
   {
     name: "Futuristic Skyline",
@@ -62,6 +67,7 @@ const sample_nfts_collect = [
     price: 700,
     created_at: "Sep 1, 2024",
     sold: true,
+    id: "0xawsacf",
   },
   {
     name: "Neon Dragon",
@@ -71,6 +77,7 @@ const sample_nfts_collect = [
     price: 800,
     created_at: "Oct 10, 2023",
     sold: false,
+    id: "aajdjanuaa2929"
   },
   {
     name: "Retro Racer",
@@ -80,6 +87,7 @@ const sample_nfts_collect = [
     price: 450,
     created_at: "Jul 25, 2023",
     sold: false,
+    id: "aaiji929"
   },
   {
     name: "Mystic Wolf",
@@ -89,6 +97,7 @@ const sample_nfts_collect = [
     price: 300,
     created_at: "Jan 5, 2024",
     sold: true,
+    id: "0xjasd9faaw33",
   },
   {
     name: "Crypto Panda",
@@ -98,6 +107,7 @@ const sample_nfts_collect = [
     price: 350,
     created_at: "Nov 18, 2022",
     sold: false,
+    id: "0xjasd9f22ss",
   },
 ];
 
@@ -166,9 +176,10 @@ export const NftMarketCard = ({ onClick, nftData = {} }) => {
         {/* View on Marketplace Button */}
         <button
           className="bg-blue-500 text-white px-6 py-2 rounded-full font-semibold text-lg hover:bg-blue-600 transition duration-300"
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent triggering card's `onClick`
-            alert(`Viewing ${name} on the marketplace`);
+          onClick={() => {
+            navigate(`/assets/${nftData.id}`, {
+              replace: false,
+            });
           }}
         >
           View on Marketplace
