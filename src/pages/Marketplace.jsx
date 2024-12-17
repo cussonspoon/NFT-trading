@@ -1,9 +1,11 @@
 import Layout from "../components/Layout";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import GridComponent from "../components/GridComponent";
 import Search from "../components/search";
 import styled from "styled-components";
+import { use } from "react";
 
 
 const Button = ({ name, setMode, mode }) => {
@@ -33,6 +35,7 @@ const Button = ({ name, setMode, mode }) => {
 
 const sample_nfts_collect = [
   {
+    id : 1,
     name: "Galaxy Explorer",
     owner: "StarGazer42",
     img: "",
@@ -43,6 +46,7 @@ const sample_nfts_collect = [
     tag: "Art",
   },
   {
+    id : "ae4f5e",
     name: "Cyberpunk Kitten",
     owner: "TechCat99",
     img: "",
@@ -53,6 +57,7 @@ const sample_nfts_collect = [
     tag: "Art",
   },
   {
+    id : "b3f4e2",
     name: "Pixel Samurai",
     owner: "NeoWarrior",
     img: "",
@@ -63,6 +68,7 @@ const sample_nfts_collect = [
     tag: "Photography",
   },
   {
+    id : "c4f5e3",
     name: "Ethereal Forest",
     owner: "NatureLover",
     img: "",
@@ -73,6 +79,7 @@ const sample_nfts_collect = [
     tag: "Photography",
   },
   {
+    id : "d3f4e2",
     name: "Astronaut Ape",
     owner: "SpaceBanana",
     img: "",
@@ -82,6 +89,7 @@ const sample_nfts_collect = [
     sold: false,
   },
   {
+    id : "e4f5e3",
     name: "Futuristic Skyline",
     owner: "UrbanDreamer",
     img: "",
@@ -92,6 +100,7 @@ const sample_nfts_collect = [
     tag: "Music",
   },
   {
+    id : "f3f4e2",
     name: "Neon Dragon",
     owner: "BrightBeast",
     img: "",
@@ -101,6 +110,7 @@ const sample_nfts_collect = [
     sold: false,
   },
   {
+    id : "g4f5e3",
     name: "Retro Racer",
     owner: "SpeedKing",
     img: "",
@@ -111,6 +121,7 @@ const sample_nfts_collect = [
     tag: "Art",
   },
   {
+    id : "h3f4e2",
     name: "Mystic Wolf",
     owner: "LunarHowl",
     img: "",
@@ -121,6 +132,7 @@ const sample_nfts_collect = [
     tag: "Photography",
   },
   {
+    id : "i4f5e3",
     name: "Crypto Panda",
     owner: "BearMarket",
     img: "",
@@ -133,7 +145,9 @@ const sample_nfts_collect = [
 ];
 
 const Marketplace = () => {
-  const [mode, setMode] = useState("All");
+  const location = useLocation();
+  const initialMode = location.state ? location.state.mode : "All";
+  const [mode, setMode] = useState(initialMode);
   const [nftData, setNftData] = useState(sample_nfts_collect);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -186,7 +200,7 @@ const Marketplace = () => {
             <Button name={"Photography"} setMode={setMode} mode={mode}></Button>
             <Button name={"PFPs"} setMode={setMode} mode={mode}></Button>
           </div>
-          <GridComponent nftData={filteredNftData} />
+          <GridComponent nftData={filteredNftData}/>
         </div>
       </div>
     </Layout>

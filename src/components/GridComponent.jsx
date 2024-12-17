@@ -9,14 +9,14 @@ const GridComponent = ({ nftData = [] }) => {
       <div className="grid md:grid-cols-4 gap-5">
         {nftData.map((item) => (
           <div
-            key={item.name}
+            key={item.id}
             className="p-4 rounded-lg shadow hover:scale-110 transform transition duration-200"
           >
             <NftMarketCard
               nftData={item || {}}
               onClick={() => {
-                navigate("/artist", {
-                  replace: true,
+                navigate(`/assets/${item.id}`, {
+                  replace: false,
                 });
               }}
             />
