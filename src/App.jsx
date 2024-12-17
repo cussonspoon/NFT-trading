@@ -12,7 +12,7 @@ import Authentication from './pages/Authentication';
 import Marketplace from './pages/Marketplace';
 import NFTPage from './pages/Nft_details';
 import Upload from './pages/Upload';
-
+import ScrollToTop from './components/scrolltotop';
 import './App.css'
 
 
@@ -20,6 +20,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         {/* <Dashboard></Dashboard> */}
         <Route path="/" element={<Dashboard/>}></Route>

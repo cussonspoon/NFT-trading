@@ -1,8 +1,9 @@
+import { useState } from "react";
 import CarouselComponent from "./Carousel";
-import NFTcard from "./NFTcard";
-import SellerCard from "./Sellercard";
+import { useNavigate } from "react-router-dom";
 
 const Artwork = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full flex flex-col items-start text-white px-10 mb-10">
       <h1 className="text-4xl">Artworks</h1>
@@ -11,6 +12,9 @@ const Artwork = () => {
           <h1>Notable Collections</h1>
           <button
             className={`relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-full group bg-gradient-to-br from-purple-500 to-pink-500 text-white mr-20 hover:scale-95 transition duration-300 ease-in-out`}
+            onClick={() => {
+              navigate("/marketplace", { state: { mode: "All" } });
+            }}
           >
             <span
               className={`relative px-5 py-2.5 text-lg transition-all ease-in duration-75 rounded-full bg-transparent`}
@@ -27,7 +31,10 @@ const Artwork = () => {
           <h1>Trending in Arts</h1>
           <button
             className={`relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-full group bg-gradient-to-br from-purple-500 to-pink-500 text-white mr-20 hover:scale-95 transition duration-300 ease-in-out`}
-            >
+            onClick={() => {
+              navigate("/marketplace", { state: { mode: "Art" } });
+            }}
+          >
             <span
               className={`relative px-5 py-2.5 text-lg transition-all ease-in duration-75 rounded-full bg-transparent`}
             >
@@ -43,7 +50,10 @@ const Artwork = () => {
           <h1>Trending in Gaming</h1>
           <button
             className={`relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-full group bg-gradient-to-br from-purple-500 to-pink-500 text-white mr-20 hover:scale-95 transition duration-300 ease-in-out`}
-            >
+             onClick={() => {
+              navigate("/marketplace", { state: { mode: "Music" } });
+            }}
+          >   
             <span
               className={`relative px-5 py-2.5 text-lg transition-all ease-in duration-75 rounded-full bg-transparent`}
             >
