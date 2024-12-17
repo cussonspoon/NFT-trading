@@ -1,7 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import WalletModal from "./Wallet_modal";
+
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const handleNavigate = (hash) => {
         navigate("/", { replace: true }); // Navigate to home
         setTimeout(() => {
@@ -13,6 +17,7 @@ const Navbar = () => {
         navigate(`/${page}`, { replace: true });
     }; 
     return (
+        <>
         <nav className="flex justify-between bg-zinc-900 backdrop-blur-sm bg-opacity-50 fixed top-0 left-0 w-full p-5 z-20 text-white">
             <h1
             className="text-2xl font-bold cursor-pointer"
@@ -37,9 +42,11 @@ const Navbar = () => {
             </li>
            
             <li>
-                <p className="cursor-pointer">WALLET</p>
+                <p className="cursor-pointer"
+                    onClick={() => setIsModalOpen(true)}
+                    >WALLET</p>
             </li>
-                        <li>
+            <li>
           <button
             className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full font-semibold hover:from-pink-500 hover:to-purple-500 transition duration-300"
             onClick={() => handlePage("upload")}
@@ -49,6 +56,11 @@ const Navbar = () => {
         </li>
             </ul>
         </nav>
+              <WalletModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
+            </>
         );
 }
 
