@@ -66,15 +66,6 @@ const NFTPage = () => {
     return <div>Error: {error}</div>;
   }
 
-  // const sampleNFT = {
-  //   title: "Cunny pics",
-  //   owner: "Sensei",
-  //   description:
-  //     "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  //   imageSrc: "/nft/nft1.jpg",
-  //   price: 6.3,
-  // };
-
   return (
     <Layout>
       <div className="min-h-screen text-white justify-center w-full overflow-x-hidden pt-20 px-36">
@@ -120,3 +111,4 @@ const NFTPage = () => {
 };
 
 export default NFTPage;
+
