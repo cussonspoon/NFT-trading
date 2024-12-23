@@ -6,9 +6,10 @@ import ItemActivity from "../components/Nft_details_page/item_activity";
 import { FaShareAlt } from "react-icons/fa";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 
 const NFTPage = () => {
-  const nft_id = 1;
+  const {nft_id} = useParams();
   const [nft, setNft] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -47,7 +48,7 @@ const NFTPage = () => {
 
   useEffect(() => {
     fetchAsset();
-  }, []); // Fetch data on component mount
+  }, [nft_id]); // Fetch data on component mount
 
   const handleShare = () => {
     console.log("Share clicked");
@@ -105,7 +106,7 @@ const NFTPage = () => {
             />
             <NFTActions
               price={nft.price}
-              onBuyNow={fetchAsset}
+              // onBuyNow={fetchAsset}
               onMakeOffer={() => console.log("Make offer clicked")}
             />
           </div>

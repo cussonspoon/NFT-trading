@@ -28,7 +28,7 @@ function App() {
         <Route path="/profile" element={<UserProfile></UserProfile>}></Route>
         <Route path="/auth" element={<Authentication></Authentication>}></Route>
         <Route path="/marketplace" element={<Marketplace></Marketplace>}></Route>
-        <Route path="/assets/:assetId" element={<NFTPage></NFTPage>}></Route>
+        <Route path="/assets/:nft_id" element={<NFTPage></NFTPage>}></Route>
         <Route path="/upload" element={<Upload/>}></Route>
       </Routes>
     </Router>
