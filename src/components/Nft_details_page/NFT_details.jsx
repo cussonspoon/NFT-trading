@@ -14,7 +14,7 @@ const NFTDetails = ({ title, owner, description, renderHeader, tag = [] }) => {
         </p>
         <p className="text-lg text-left">{description}</p>
       </div>
-      <div className="bg-zinc-900 p-4 rounded-lg mb-2 border border-zinc-700">
+      <div className="bg-zinc-900 p-4 rounded-lg mb-6 border border-zinc-700">
         <p className="text-grey-400 text-lg font-semibold text-left">Tags</p>
         <div className="mt-2 flex flex-wrap gap-4">
           {tag.map((item, index) => (
