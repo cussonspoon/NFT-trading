@@ -7,7 +7,6 @@ import { FaShareAlt } from "react-icons/fa";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { use } from "react";
 
 const NFTPage = () => {
   const { nft_id } = useParams();
@@ -15,6 +14,7 @@ const NFTPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [owner, setOwner] = useState(null);
+  const [tags, setTags] = useState(null);
 
   const fetchOwner = async (owner_id) => {
     try {
@@ -29,12 +29,17 @@ const NFTPage = () => {
   };
 
   useEffect(() => {
-    if (nft) {
-      fetchOwner(nft.owner_id).then((owner) => {
-        setOwner(owner);
-      });
-    }
-  }, [nft]);
+    const fetchTags = async () => {
+      try {
+        const response = await axios.get(`http://127.0.0.1:3000/tag/getTags/${nft_id}`);
+        setTags(response.data);
+      } catch (err) {
+        console.error("Error fetching tags data:", err);
+        setTags([]);
+      }
+    };
+    fetchTags();
+  }, [nft_id]);
 
   useEffect(() => {
     const fetchAsset = async () => {
@@ -50,6 +55,14 @@ const NFTPage = () => {
     };
     fetchAsset();
   }, [nft_id]);
+
+  useEffect(() => {
+    if (nft) {
+      fetchOwner(nft.owner_id).then((owner) => {
+        setOwner(owner);
+      });
+    }
+  }, [nft]);
 
   const handleShare = () => {
     console.log("Share clicked");
@@ -98,6 +111,7 @@ const NFTPage = () => {
                 nft.description ||
                 "lore ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
               }
+              tag={tags ? tags.map((tag) => tag.name) : ["No tags"]}
               renderHeader={() => (
                 <button
                   onClick={handleShare}
