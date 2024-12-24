@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import NftMarketCard from "../components/NftMarketCard";
 import Layout from "../components/Layout";
 import LoadingButton from "../components/LoadingButton";
+import TagSelector from "../components/Tag_selector";
 
 const Upload = () => {
+  //Get Username
+  //Get all Tags
+  //Post NFTs data paylaod
   const [itemName, setItemName] = useState("");
   const [description, setDescription] = useState("");
   const [royalties, setRoyalties] = useState("");
   const [size, setSize] = useState("");
-  const [properties, setProperties] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleFileUpload = (e) => {
@@ -21,6 +25,9 @@ const Upload = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  //Sample Data
+  const availableTags = ["Fantasy", "Sci-Fi", "Historical", "Art", "Music", "Nega", "Cunny", "Guide_Dog"];
 
   return (
     <Layout>
@@ -121,19 +128,13 @@ const Upload = () => {
                       />
                     </div>
 
-                    {/* Properties */}
-                    <div>
-                      <label className="block text-sm mb-1 text-left font-sans text-zinc-400 font-bold">
-                        TAGS
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full bg-zinc-800 text-white rounded-md px-4 py-2"
-                        placeholder="e.g., Fantasy"
-                        value={properties}
-                        onChange={(e) => setProperties(e.target.value)}
+                    {/* Tag Selector */}
+                    <div className="mt-5 ml-5">
+                      <TagSelector
+                        availableTags={availableTags}
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
                       />
-                      
                     </div>
                   </div>
                 </div>
@@ -158,7 +159,7 @@ const Upload = () => {
                   setDescription("");
                   setRoyalties("");
                   setSize("");
-                  setProperties("");
+                  setSelectedTags([]);
                   setImagePreview(null);
                 }}
               >
